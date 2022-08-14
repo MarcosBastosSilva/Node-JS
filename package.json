@@ -1,0 +1,14 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "teste de api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcos Vinicius Bastos da Silva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
