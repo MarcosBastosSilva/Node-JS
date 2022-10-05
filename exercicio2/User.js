@@ -22,3 +22,4 @@ const User = banco.define('users',{
 User.sync()
 
 module.exports = User
+

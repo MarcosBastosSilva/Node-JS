@@ -13,18 +13,16 @@ app.post("/cadastrar",async function(req,res) {
         
     await User.create(req.body)
     .then(() => {
-        return res.json({
+         res.json({
             erro:false,
             mensagem: "usuario cadastrado com sucesso"
         })
     }).catch(() => {
-        return res.status(400).json({
+        res.status(400).json({
             erro:true,
             mensagem: "Erro,usuario não cadastrado com sucesso"
         })
     })
-
-    res.send("pagina sobre cadastro")
 })
 
 app.get("/sobre-empresa", function(req,res){
