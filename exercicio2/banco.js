@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const User = require('./User')
 
 const sequelize = new Sequelize("cadastro","root","123456",{
     host:'localhost',
@@ -14,4 +15,6 @@ sequelize.authenticate()
 })
 
 module.exports = sequelize
+
+
     

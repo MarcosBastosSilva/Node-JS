@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const banco = require('./banco')
 
+
 const User = banco.define('users',{
     id: {
         type:Sequelize.INTEGER,
@@ -15,12 +16,19 @@ const User = banco.define('users',{
     email:{
         type: Sequelize.STRING,
         allowNule: false,
-    }
+    },
+    nacionalidade:{
+        type: Sequelize.STRING,
+        allowNule: false,
+    },
 })
 
 
 //quando nao tem a tabela irá criar.
-User.sync()
+User.sync({ alter: true })
+
+
+
 
 module.exports = User
 
