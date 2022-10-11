@@ -18,6 +18,7 @@ const User = banco.define('users',{
     }
 })
 
+
 //quando nao tem a tabela irá criar.
 User.sync()
 

@@ -1,4 +1,5 @@
 const express = require("express")
+const { ConnectionAcquireTimeoutError } = require("sequelize")
 const app = express()
 const User = require('./User')
 
@@ -36,5 +37,7 @@ app.get("/blog", function(req,res){
 app.get("/contato", function(req,res){
     res.send("Pagina de contato")
 })
+
+
 
 app.listen(8080)
