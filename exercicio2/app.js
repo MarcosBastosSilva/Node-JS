@@ -32,7 +32,7 @@ app.delete("/deletar/:id",async function(req,res){
     //console.log(id)
     const user = await User.findByPk(id)
     //console.log(user)
-    await user.destroy()
+    await user.destroy(1)
     
     .then(() => {
         res.json({
@@ -49,24 +49,57 @@ app.delete("/deletar/:id",async function(req,res){
 
 })
 
+app.put("/atualizar/:id", async function(req,res){
+
+    const { id } = req.params
+    const {name, email, nacionaliade} = req.body
+
+    const user = await User.findOne({where:{ id }})
+   
+    if(!user){
+        res.status(400).json({mensagem:"NENHUM USUARIO ENCONTRADO"})
+    } else {
+        const user = await User.update({name,email,nacionaliade},{where:{ id }})
+    }
+    res.status(200).json({ User })
+})
+
 app.get("/user/:id", async function(req,res){
 
-//usuario conforte o id
-
-
+    const id = req.params.id
+    const user =  User.findByPk(id)
+    .then((user_banco) => {
+        res.json({
+           erro:false,
+           mensagem: "ID acessado com sucesso",
+           User:user_banco
+       })
+   }).catch(() => {
+       res.status(400).json({
+           erro:true,
+           mensagem: "Não foi possivel acessar o ID"
+       })
+   })
 })
 
 app.get("/users", async function(req,res){
-
-//usuarios no banco todos
-
-})
-
-app.put("/atualizar/:id", async function(req,res){
-
     
+    const id = req.params.id
+    const user =  User.findAll()
+    .then((user_banco) => {
+        res.json({
+           erro:false,
+           mensagem: "Todos os ID foram acessados",
+           User:user_banco
+       })
+   }).catch(() => {
+       res.status(400).json({
+           erro:true,
+           mensagem: "Não foi possivel acessar os ID's"
+       })
+   })
 })
-
+    
 app.get("/sobre-empresa", function(req,res){
     res.sendFile(__dirname + "/src/sobre-empresa.html")
 })
