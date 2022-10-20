@@ -1,0 +1,18 @@
+{
+  "name": "exercicio3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon appjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20"
+  }
+}
