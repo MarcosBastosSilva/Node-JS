@@ -11,4 +11,9 @@ const Artigo = new moongose.Schema({
     },
     
 
+},
+{
+    timestamps: true,
 })
+
+moongose.model('artigo', Artigo)
