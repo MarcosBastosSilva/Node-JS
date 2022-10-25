@@ -61,4 +61,8 @@ app.post("/artigo", async function(req,res){
     })
 });
 
+app.put("/artigo/:id", async function(req,res){
+    const artigo = Artigo.updateOne({_id: req.params.id}, req.body)
+})
+
 app.listen(8080)
