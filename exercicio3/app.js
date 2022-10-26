@@ -1,6 +1,8 @@
 const { json } = require('express')
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
+
 
 require("./models/Artigo")
 const Artigo = mongoose.model('artigo')
@@ -8,6 +10,8 @@ const Artigo = mongoose.model('artigo')
 const app = express()
 
 app.use(express.json())
+
+
 
 
  mongoose.connect('mongodb://localhost/TesteNo1',{
@@ -62,7 +66,29 @@ app.post("/artigo", async function(req,res){
 });
 
 app.put("/artigo/:id", async function(req,res){
-    const artigo = Artigo.updateOne({_id: req.params.id}, req.body)
+    const artigo = Artigo.updateOne({_id: req.params.id}, req.body, (err) =>{
+        if(err) return res.status(400).json({
+            error: true,
+            mensagem:"erro ao tentar encontrar o ID"
+        })
+        return res.status(200).json({
+            error:false,
+            mensagem: "ID encontrado com sucesso."
+        })
+    })
+})
+
+app.delete("/artigo/:id",async function(req,res){
+    const artigo = Artigo.deleteOne({_id: req.params.id}, req.body, (err) =>{
+        if(err) return res.status(400).json({
+            error:true,
+            mensagem:"Não foi possivel apagar, favor verificar"
+        })
+        return res.status(200).json({
+            error:false,
+            mensagem:"O conteudo foi apagado com sucesso!"
+        })
+    })
 })
 
 app.listen(8080)
