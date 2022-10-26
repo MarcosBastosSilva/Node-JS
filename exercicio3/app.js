@@ -11,9 +11,6 @@ const app = express()
 
 app.use(express.json())
 
-
-
-
  mongoose.connect('mongodb://localhost/TesteNo1',{
     useNewUrlParser: true,
   useUnifiedTopology: true
